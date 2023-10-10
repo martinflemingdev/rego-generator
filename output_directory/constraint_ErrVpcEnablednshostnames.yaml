@@ -8,6 +8,5 @@ metadata:
 spec:
   match:
     kinds:
-    - kinds:
-      - VPC
-      apiGroups: [""]
+    - kinds: ["VPC"]
+      apiGroups: ["*.crossplane.io"]

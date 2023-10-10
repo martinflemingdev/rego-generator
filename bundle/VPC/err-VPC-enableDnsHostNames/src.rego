@@ -10,6 +10,6 @@
 package dnscheck
 
 violation[{"msg": msg}] {
-    input.spec.forProvider.enableDnsHostNames == false
+    not input.spec.forProvider.enableDnsHostNames == true
     msg := "Field 'spec.forProvider.enableDnsHostNames' should be set to true."
 }
