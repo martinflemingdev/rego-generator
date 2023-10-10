@@ -1,0 +1,20 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  creationTimestamp: null
+  name: errvpcenablednshostnames
+spec:
+  crd:
+    spec:
+      names:
+        kind: ErrVpcEnablednshostnames
+  targets:
+  - rego: |-
+      package dnscheck
+
+      violation[{"msg": msg}] {
+          input.spec.forProvider.enableDnsHostNames == false
+          msg := "Field 'spec.forProvider.enableDnsHostNames' should be set to true."
+      }
+    target: admission.k8s.gatekeeper.sh
+status: {}
