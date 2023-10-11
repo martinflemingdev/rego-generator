@@ -7,8 +7,8 @@ valid_cpu_memory = {
 }
 
 violation[{"msg": msg}] {
-    cpu := input.spec.forProvider.fargate.taskDefinition.cpu
-    memory := input.spec.forProvider.fargate.taskDefinition.memory
+    cpu := input.spec.fargate.taskDefinition.cpu
+    memory := input.spec.fargate.taskDefinition.memory
     not valid_cpu_for_memory(cpu, memory)
     msg := sprintf("Invalid CPU and Memory combination: CPU: %v, Memory: %v", [cpu, memory])
 }
