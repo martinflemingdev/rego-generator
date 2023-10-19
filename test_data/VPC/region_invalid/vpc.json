@@ -1,0 +1,19 @@
+{
+    "apiVersion": "ec2.aws.crossplane.io/v1beta1",
+    "kind": "VPC",
+    "metadata": {
+        "name": "sample-vpc-invalid"
+    },
+    "spec": {
+        "forProvider": {
+            "cidrBlock": "10.0.0.0/16",
+            "enableDnsHostNames": true,
+            "enableDnsSupport": true,
+            "instanceTenancy": "default",
+            "region": "invalid-region"
+        },
+        "providerConfigRef": {
+            "name": "example"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{"spec": {
+    "fargate": {
+        "taskDefinition": {
+            "cpu":"5132",
+            "memory":"512"
+        }
+    }
+}
+}
