@@ -32,21 +32,22 @@ def add_comments_column(markdown_text):
 
     return markdown_text
 
-# Function to process a directory of markdown files
+# Function to process a directory and its subdirectories
 def process_directory(directory_path):
-    for filename in os.listdir(directory_path):
-        if filename.endswith(".md"):
-            file_path = os.path.join(directory_path, filename)
+    for root, dirs, files in os.walk(directory_path):
+        for filename in files:
+            if filename.endswith(".md"):
+                file_path = os.path.join(root, filename)
 
-            with open(file_path, "r") as file:
-                markdown_content = file.read()
+                with open(file_path, "r") as file:
+                    markdown_content = file.read()
 
-            updated_markdown = add_comments_column(markdown_content)
+                updated_markdown = add_comments_column(markdown_content)
 
-            with open(file_path, "w") as file:
-                file.write(updated_markdown)
+                with open(file_path, "w") as file:
+                    file.write(updated_markdown)
 
-            print(f"Updated {filename}")
+                print(f"Updated {file_path}")
 
 if __name__ == "__main__":
     directory_path = "/path/to/your/directory"  # Change this to your directory path
